@@ -1,0 +1,71 @@
+.logout{
+    margin-inline-start: 35%;
+}
+#floppa-coins{
+    width: 8%
+}
+#bingus{
+    margin-inline-end: 10%;
+}
+#bingus-img{
+    width: 100%;
+}
+.body {
+    background-image: url(../media/TheLastFlopp.jpg);
+    background-size: cover ;
+    background-position: right;
+    justify-content: center;
+}
+img
+{
+    width:430px;
+    height:430px;
+}
+.bloc .add_word{
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width : 30%;
+}
+
+.bloc .add_word #message{
+    background-color: white;
+    opacity: 50%;
+    outline-color: aqua;
+    color: black;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    margin-block-end: 15px;
+
+}
+
+.bloc .add_word input {
+    width: 50%;
+    margin-block-end: 10px;
+    margin-inline-start:25%;
+    margin-inline-end: 25%;
+    justify-content:baseline;
+}
+
+.bloc .add_word #button {
+    font-weight: bold;
+    background-color: rgb(38, 105, 38);
+    color: aliceblue;
+    border-radius: 3px;
+    border:0;
+    transition: all 0.3s ease;
+    padding : 5px;
+    cursor: pointer;
+}
+
+.bloc .add_word #button:hover {
+    background-color: rgb(237, 189, 67);
+    color: aliceblue;
+    border-radius: 3px;
+    border:0;
+
+}

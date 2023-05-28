@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block link %}
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/add_word.css') }} " />
+{% endblock %}
+
+{% block body %}
+
+    <div class="bloc">
+        <h1>Wordle, version Big Floppa !</h1>
+        <div class="input">
+            <div class="add_word">
+                
+                <form action="{{url_for('newWord')}}" method='POST'>
+                    <div class="field">
+                        <p id="message">Ajoutez un mot</p>
+                        <input type="text" id="new_word" name="new_word">
+                        <p ><input id="button" type="submit" value="Rajouter le mot"></p>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

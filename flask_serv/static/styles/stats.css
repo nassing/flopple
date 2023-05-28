@@ -1,0 +1,113 @@
+.button {
+    text-decoration: none;
+    padding: 0;
+    background: rgb(29, 29, 32);
+    border-radius: 5px;
+    align-self: end;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    height: 6%;
+    width: 3%;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.overlay {
+    z-index: 1;
+    color:rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(1, 1, 1, 0.5);
+    display: none;
+}
+
+.overlay:target {
+    display: block;
+}
+  
+.popup {
+    margin: 1% auto;
+    padding: 1em;
+    background: rgb(29, 29, 32);
+    border-radius: 5px;
+    width: 40%;
+    position: relative;
+}
+  
+.popup .close {
+    color:rgb(255, 255, 255);
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0%;
+}
+
+.boxOf2 {
+    text-align: center;
+    background-color: rgb(20, 20, 21);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.box {
+    width: 65px;
+    height: 25px;
+    margin: 5px;
+    text-align: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bolder;
+    color: rgb(0, 128, 0);
+}
+
+.box-legend {
+    width: 65px;
+    margin: 5px;
+
+}
+
+label {
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(200, 200, 200);
+}
+
+select {
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(20, 20, 21);
+    background-color: rgb(200, 200, 200);
+    border: none;
+    border-radius: 5px;
+}
+
+input {
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(200, 200, 200);
+    background-color: grey;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+h5 {
+    margin-top:0%;
+    font-weight: initial;
+}

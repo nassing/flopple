@@ -1,0 +1,374 @@
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1d1d20;
+  border: 0;
+  margin: 0;
+}
+
+body #alert_flopple {
+  width: 98%;
+  background-color: #ff2a2a9f;
+  color: antiquewhite;
+  font-display: center;
+  font-size: 2vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  position: absolute;
+}
+
+body #topbar {
+  background-color: #141415;
+  height: 8%;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  font-family: Impact;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 200%;
+  letter-spacing: 0.4vw;
+}
+
+body #topbar #flopple {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body #topbar #flopple p:nth-of-type(4) {
+  color: green;
+}
+
+body #topbar #flopple p:nth-of-type(5) {
+  color: orange;
+}
+
+body #main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 92%;
+  width: 100%;
+}
+
+body #main #game {
+  height: 55%;
+  max-width: 100%;
+  min-width: 300px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (minmax(0, 1fr))[6];
+      grid-template-rows: repeat(6, minmax(0, 1fr));
+  -ms-grid-columns: (minmax(0, 1fr))[5];
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-gap: 1.5vh;
+  padding: 2rem;
+}
+
+body #main #game .empty-case {
+  min-height: 100%;
+  min-width: 55px;
+  border-radius: 10%;
+  background-color: #1d1d20;
+  border: solid gray 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  aspect-ratio: 1;
+}
+
+body #main #game .empty-case p {
+  font-size: 2.5vw;
+}
+
+body #main #game .gray-case {
+  min-height: 100%;
+  min-width: 55px;
+  border-radius: 10%;
+  background-color: #3a3a40;
+  border: solid gray 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  aspect-ratio: 1;
+}
+
+body #main #game .gray-case p {
+  font-size: 2.5vw;
+}
+
+body #main #game .green-case {
+  min-height: 100%;
+  min-width: 55px;
+  border-radius: 10%;
+  background-color: green;
+  border: solid gray 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  aspect-ratio: 1;
+}
+
+body #main #game .green-case p {
+  font-size: 2.5vw;
+}
+
+body #main #game .orange-case {
+  min-height: 100%;
+  min-width: 55px;
+  border-radius: 10%;
+  background-color: orange;
+  border: solid gray 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  aspect-ratio: 1;
+}
+
+body #main #game .orange-case p {
+  font-size: 2.5vw;
+}
+
+body #main #keyboard {
+  height: 28%;
+  width: 30%;
+  min-width: 400px;
+  margin-bottom: 2vh;
+  background-color: #141415;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+body #main #keyboard .keyboard-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #main #keyboard .keyboard-row .keyboard-key {
+  text-align: center;
+  border: solid gray 1px;
+  height: 52px;
+  width: 45px;
+  max-width: 90px;
+  margin: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #666666;
+  font-size: 1.10rem;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  vertical-align: top;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+body #main #keyboard .keyboard-row .keyboard-key:active {
+  background: #7f2f2f;
+}
+
+body #main #keyboard .keyboard-row .green-keyboard-key {
+  text-align: center;
+  border: solid gray 1px;
+  height: 52px;
+  width: 45px;
+  max-width: 90px;
+  margin: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: green;
+  font-size: 1.10rem;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  vertical-align: top;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+body #main #keyboard .keyboard-row .green-keyboard-key:active {
+  background: white;
+}
+
+body #main #keyboard .keyboard-row .orange-keyboard-key {
+  text-align: center;
+  border: solid gray 1px;
+  height: 52px;
+  width: 45px;
+  max-width: 90px;
+  margin: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: orange;
+  font-size: 1.10rem;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  vertical-align: top;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+body #main #keyboard .keyboard-row .orange-keyboard-key:active {
+  background: white;
+}
+
+body #main #keyboard .keyboard-row .gray-keyboard-key {
+  text-align: center;
+  border: solid gray 1px;
+  height: 52px;
+  width: 45px;
+  max-width: 90px;
+  margin: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #302f2f;
+  font-size: 1.10rem;
+  color: gray;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  vertical-align: top;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+body #main #keyboard .keyboard-row .gray-keyboard-key:active {
+  background: white;
+}
+
+body #main .return-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+body #main .return-buttons #return-button {
+  text-decoration: none;
+  color: white;
+  background-color: green;
+  padding: 1.5%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+body #main .return-buttons #share-button {
+  text-decoration: none;
+  color: white;
+  background-color: orange;
+  padding: 1.5%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/*# sourceMappingURL=game.css.map */
