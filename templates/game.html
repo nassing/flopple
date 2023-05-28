@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel=stylesheet href="{{ url_for('static', filename='styles/game.css') }}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<!-- Les liens pour l'affichage des statistiques -->
+	<link rel=stylesheet href="{{ url_for('static', filename='styles/stats.css') }}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<!-- Fin des liens pour l'affichage des statistiques -->
+</head>
+<body>
+
+	<div id="topbar">
+		<a href="{{url_for('index')}}">
+			<div id="flopple">
+				<p>f</p>
+				<p>l</p>
+				<p>o</p>
+				<p>p</p>
+				<p>p</p>
+				<p>l</p>
+				<p>e</p>
+			</div>
+		</a>
+	</div>
+	
+	<!-- Début du code pour afficher les statistiques -->
+
+	<div>
+		<a class="button" href="#stats">
+			<img src="{{ url_for('static', filename='media/stats.png') }}">
+		</a>
+	</div>
+
+	<div id="stats" class="overlay">
+		<div class="popup">
+			<a class="close" href="#">&times;</a>
+			<!-- Le titre "Statistics" -->
+			<center>
+				<div class="container">
+					<h2 style="background-color: green; width: 27px; height: 27px; border-radius: 5px;">S</h2><h2>tatistics</h2>
+				</div>
+			</center>
+
+			<!-- Statistics -->
+			<div class="container">
+				<div class="boxOf2">
+					<div class="box">{{nb_played}}</div>
+					<div class="box-legend">Played</div>
+				</div>
+				<div class="boxOf2">
+					<div class="box">{{win_rate}}</div>
+					<div class="box-legend">Win %</div>
+				</div>
+				<div class="boxOf2">
+					<div class="box">{{currentStreak}}</div>
+					<div class="box-legend">Current Streak</div>
+				</div>
+				<div class="boxOf2">
+					<div class="box">{{maxStreak}}</div>
+					<div class="box-legend">Max Streak</div>
+				</div>
+			</div>
+
+			<br>
+
+			<!-- Choix des paramètres des parties dont on veut les performances -->
+			<form action='/joinGame#stats' method="POST">
+				<div>
+					<label for="lengthsTriesDisplay">Guess distribution of games played with a</label>
+					<select name="lengthsTriesDisplay" id="lengthsTriesDisplay" required>
+					{% for i in range(nb_lengthsTries) %}
+						<option value="{{list_lengthsTries[i][0]}} {{list_lengthsTries[i][1]}}"> {{list_lengthsTries[i][1]}}-limit tries and a word with {{list_lengthsTries[i][0]}} letters</option>
+					{% endfor %}
+					</select>
+				</div>
+				<div style="display: flex; justify-content: right; margin-top: 10px">
+					<a href='/joinGame#stats'>
+						<input type="hidden" name="tries" value="{{triesLeft}}">
+						<input type="hidden" name="length" value="{{wordSize}}">
+						<input type="hidden" name="submit" value="Display">
+						<input id="display" type="submit"  value="Display" >
+					</a>
+				</div>
+			</form>
+
+		{% if guess_distribution == [[], []] %}
+			<!-- S'il n'y a pas de données -->
+			<div class="container">
+				<h3>No Data !</h3>
+			</div>
+		{% else %}
+			<!-- Affichage des performances (graphique)-->
+			<center>
+				<div>
+					<div class="container">
+						<h3 style="background-color: green; width: 21px; height: 21px; border-radius: 5px;">G</h3><h3 style="margin-right: 10px;">uess</h3>
+						<h3 style="background-color: orange; width: 21px; height: 21px; border-radius: 5px;">D</h3>
+						<h3>istribution</h3>
+						<!-- games with a i tries limit and a word with n letters</h3>-->
+				</div>
+			</center>
+
+			<canvas id="myChart"></canvas>
+			<script>
+				var xValues = {{guess_distribution[0]}};
+				var yValues = {{guess_distribution[1]}};
+				var barColors = "rgb(200, 200, 200)";
+
+				new Chart("myChart",
+				{
+					type:"horizontalBar",
+					data: {
+						labels: xValues,
+						text: yValues.map(String),
+						datasets: [{
+							backgroundColor: barColors,
+							data: yValues,
+						}]
+					},
+					options: {
+						legend: {display: false},
+						title: {
+							display: true,
+							text: "Number of victories versus number of tries before victory"
+						},
+						scales: {
+							xAxes: [{ticks: {min: 0, max: {{guess_distribution[0][-1]}}},
+									display: false}]
+						}
+					}
+				}
+				)
+			</script>
+			<!-- Pour le graphique : https://www.w3schools.com/ai/ai_chartjs.asp -->
+		{% endif %}
+		</div>
+	</div>
+
+	<!-- Fin du code pour afficher les statistiques -->
+
+	<div id="main">
+		<style>
+			body #main #game {
+				height: 55%;
+				min-width: 30px;
+				display: -ms-grid;
+				display: grid;
+				grid-row-start: auto;
+				grid-template-rows: repeat( {{maxTries}}, minmax(0, 1fr));
+				grid-column-start: auto;
+				grid-template-columns: repeat( {{wordSize}}, minmax(0, 1fr));
+				grid-gap: 8%;
+				padding: 2rem;}
+		</style>
+		
+		
+		{% if alert_message_flopp %}
+		<div id="alert_flopple">
+			<div class="alert_and_corps">
+				<div class="alert">
+					<span class="closebutton" onclick="document.getElementById('alert_flopple').style.display='none';">&times;</span>
+					{{alert_message_flopp}}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		
+		<div id="game">
+
+			{%for i in range( maxTries*wordSize )%}
+
+				{%if colors[i]==null %}
+					<div class="empty-case">
+						<p></p>
+					</div>
+				{%endif%}
+				
+				{%if colors[i]=="B" %}
+					<div class="gray-case">
+						<p></p>
+					</div>
+				{%endif%}
+
+				{%if colors[i]=="G" %}
+					<div class="green-case">
+						<p></p>
+					</div>
+				{%endif%}
+
+				{%if colors[i]=="O" %}
+					<div class="orange-case">
+						<p></p>
+					</div>
+				{%endif%}
+
+			{%endfor%}
+		</div>
+
+		{% if finish == True %}
+		<div class="return-buttons">
+			<div id="return-button">
+				<a href="{{ url_for('index')}}">Retour à l'accueil</a>
+			</div>
+			<div id="share-button" onclick="shareGame()">
+				<a id="share-button-text">Partager la partie</a>
+			</div>
+		</div>
+		{% endif %}
+
+		<p>{{ leftTries }}</p>
+
+		<div id="keyboard">
+
+			<div class="keyboard-row">
+				{%for letter in ['A', 'Z', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P']%}
+					<div class="keyboard-key" onclick="writeWord('{{letter}}')">
+						<p>{{letter}}</p>
+					</div>
+				{%endfor%}
+			</div>
+	
+			<div class="keyboard-row">
+				{%for letter in ['Q', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M']%}
+					<div class="keyboard-key" onclick="writeWord('{{letter}}')">
+						<p>{{letter}}</p>
+					</div>
+				{%endfor%}
+			</div>
+	
+			<div class="keyboard-row">
+				<div class="keyboard-key" onclick="writeWord('delete')"> <i class="material-icons" id = "delete"> backspace</i> </div>
+				{%for letter in ['W', 'X', 'C', 'V', 'B', 'N']%}
+					<div class="keyboard-key" onclick="writeWord('{{letter}}')">
+						<p>{{letter}}</p>
+					</div>
+				{%endfor%}
+				<div class="keyboard-key" onclick="writeWord('enter')"> <i class="material-icons" id = "enter" >check </i> </div>
+			</div>
+	
+	
+
+		</div>
+	</div>
+
+	<form action="/tryWord/{{ id_game }}" method="POST" id="try_form">
+		<input type="hidden" id="tryWord" name="tryWord" value="">
+	</form>
+
+	<div data-current-word class="previous-operand"></div>
+
+	<script type="text/javascript">
+
+		let lineSize = {{wordSize}}; //Taille d'une ligne (nombre de colonnes)
+		let caseTemplate = document.getElementsByClassName('case')[0];	//Récupération du template de case
+		let keyboardKeyTemplate = document.getElementsByClassName('keyboard-key')[0];	//Récupération du template de case
+		let game = document.getElementById('game');	//Récupération du conteneur des cases
+		let lineCursor = 0;	//Curseur des lignes
+		let columnCursor = 0; //Curseur des colonnes
+		let input = "";
+
+		function writeWord(key) 
+		{	
+			const alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			if(key=="enter")	//enter
+			{
+				SubmitWord();
+			}
+
+			if(key=="delete")	//retour arrière
+			{
+				RemoveLastLetter();
+			}
+
+			else if(alphabet.includes(key))	//Si c'est une lettre de l'alphabet
+			{
+				if(columnCursor<lineSize)
+				{
+					game.children[(lineCursor*lineSize)+columnCursor].children[0].innerText=key;
+					columnCursor+=1;
+					input+=key;
+				}
+			}	
+		}
+
+		//Détection des touches
+		document.body.addEventListener("keydown", keyListener);
+
+		function keyListener(key) 
+		{
+			const alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+			if(key.keyCode == 13)	//enter
+			{
+				SubmitWord();
+			}
+
+			else if(key.keyCode == 8)	//retour arrière
+			{
+				RemoveLastLetter();
+			}
+
+			else if(alphabet.includes(key.key))	//Si c'est une lettre de l'alphabet
+			{
+				if(columnCursor<lineSize)
+				{
+					game.children[(lineCursor*lineSize)+columnCursor].children[0].innerText=key.key.toUpperCase();					
+					columnCursor+=1;
+					input+=key.key.toUpperCase();
+				}
+			}	
+		}
+
+		//Si le mot a le bon nombre de lettres, envoie un form, sinon erreur
+		function SubmitWord()
+		{
+			if(columnCursor==lineSize)
+			{
+				columnCursor=0;
+				lineCursor+=1;
+				document.getElementById('tryWord').value = input;
+				document.getElementById('try_form').submit();
+				input="";
+			}
+		}
+
+		//Supprime la dernière lettre entrée
+		function RemoveLastLetter()
+		{
+			console.log(columnCursor);
+			if(columnCursor>0)
+			{
+				if(columnCursor==lineSize)
+				{
+					columnCursor-=1;
+					game.children[(lineCursor*lineSize)+columnCursor].children[0].innerText="";
+				}
+				else if(game.children[(lineCursor*lineSize)+columnCursor].children[0].innerText=="")
+				{
+					columnCursor-=1;
+					game.children[(lineCursor*lineSize)+columnCursor].children[0].innerText="";
+				}
+				else
+				{
+					game.children[(lineCursor*lineSize)+columnCursor].children[0].innerText="";
+					columnCursor-=1;
+				}
+				input=input.slice(0,-1);
+			}
+		}
+
+		
+		//Fonctionnel, à raccorder avec le Flask
+		function printLines(words)	//Pour afficher tous les mots sur les lignes
+		{
+			for(let i=0; i<words.length; i++)
+			{
+				printLine(words[i],i);
+			}
+			lineCursor = words.length;
+		}
+
+		
+		function printLine(word,lineNumber)	//Pour afficher un mot sur une ligne
+		{
+			for (let i=0; i<lineSize; i++)
+			{
+				game.children[lineSize*lineNumber+i].innerHTML = "<p>"+word.charAt(i).toUpperCase()+"<\p>"; //marche pas
+			}
+		}
+
+
+		function getKeyboardColors()
+		{
+			//Lit game pour récupérer les couleurs des lettres
+			greenLetters = [];	//D'abbord on regarde celles qui sont vertes
+			orangeLetters = []; //Ensuite on regarde les oranges et on enlève celles dans greenLetters
+			grayLetters = []; //Pareil avec les grises et on enlève celles de greenLetters et orangeLetters
+
+			for(let i=0; i<game.children.length; i++)
+			{
+				if(game.children[i].className=="green-case")
+				{
+					greenLetters.push(game.children[i].innerText);
+				}
+			}
+
+			for(let i=0; i<game.children.length; i++)
+			{
+				if(game.children[i].className=="orange-case")
+				{
+					if(!greenLetters.includes(game.children[i].innerText))
+					{
+						orangeLetters.push(game.children[i].innerText);
+					}
+				}
+			}
+
+			for(let i=0; i<game.children.length; i++)
+			{
+				if(game.children[i].className=="gray-case")
+				{
+					if((!greenLetters.includes(game.children[i].innerText)) && (!orangeLetters.includes(game.children[i].innerText)))
+					{
+						grayLetters.push(game.children[i].innerText);
+					}
+				}
+			}
+
+			colors = [greenLetters,orangeLetters,grayLetters];
+			return colors;
+		}
+
+		function colorKeyboard()	//Pour indiquer au joueur quelles lettres il a déjà utilisé
+		{
+			colors = getKeyboardColors();
+			greenLetters = colors[0];
+			orangeLetters = colors[1];
+			grayLetters = colors[2];
+			keyboardRows = document.getElementsByClassName("keyboard-row");
+			for(let i=0; i<3; i++)
+			{
+				rowSize = keyboardRows[i].childElementCount;
+				for(let j=0; j<rowSize; j++)
+				{
+					let keyDiv = keyboardRows[i].children[j];
+					let letter = keyDiv.innerText;
+					if(greenLetters.indexOf(letter)!=-1) {keyDiv.className = "green-keyboard-key";}
+					else if(orangeLetters.indexOf(letter)!=-1) {keyDiv.className = "orange-keyboard-key";}
+					else if (grayLetters.indexOf(letter)!=-1) {keyDiv.className = "gray-keyboard-key";}
+				}
+			}
+		}
+
+		function shareGame()
+		{
+			if(!navigator.clipboard) 
+			{
+				alert("Navigateur incompatible !");
+			}
+			else
+			{
+				document.getElementById("share-button-text").innerText="Texte Copié !";
+				var gameText="Ma dernière partie de Flopple :\n";
+				for(let i=0;i<game.children.length;i++)
+				{
+					if(game.children[i].className=="green-case")
+					{
+						gameText+="🟩";
+					}
+					else if(game.children[i].className=="orange-case")
+					{
+						gameText+="🟨";
+					}
+					else
+					{
+						gameText+="⬛";
+					}
+
+					if(i%lineSize==4)
+					{
+						gameText+="\n";
+					}
+				}
+				gameText+="https://flopple.tk";
+				navigator.clipboard.writeText(gameText);		
+			}
+		}
+
+		//-----------------------------------------------------------------------------------------------------------
+
+		printLines(	[	{% for guess in guesses %}	"{{guess}}",	{%endfor%}	]	);	// Affiche les mots précédemments entrés
+		colorKeyboard();
+
+		//-----------------------------------------------------------------------------------------------------------
+
+
+	</script>
+
+
+	
+</body>
+</html>

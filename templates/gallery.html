@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/gallery.css')}}">
+</head>
+
+
+<body>
+
+    <div id=title>
+        <p>Galerie</p>
+    </div>
+
+
+
+    <div id=gallery>
+
+
+        <div id=gallery-pages>
+
+            <div class=gallery-page>
+                <div id="img1">
+                    {%if boolean_list[0]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/commun/floppa1.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa1.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+            </div>
+            <div id="img2">
+                {%if boolean_list[1]==True%}
+                <a href="{{url_for('static',filename='media/floppictures/commun/floppa2.jpg')}}')"><img src="{{url_for('static',filename='media/floppictures/commun/floppa2.jpg')}}"></a>
+                {%else%}
+                <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                {%endif%}
+            </div>
+            <div id="img3">
+                {%if boolean_list[2]==True%}
+                <a href="{{url_for('static',filename='media/floppictures/commun/floppa3.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa3.jpg')}}"></a>
+                {%else%}
+                <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                {%endif%}
+            </div>
+            <div id="img4">
+                {%if boolean_list[3]==True%}
+                <a href="{{url_for('static',filename='media/floppictures/commun/floppa4.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa4.jpg')}}"></a>
+                {%else%}
+                <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                {%endif%}
+            </div>
+            <div id="img5">
+                {%if boolean_list[4]==True%}
+                <a href="{{url_for('static',filename='media/floppictures/commun/floppa5.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa5.jpg')}}"></a>
+                {%else%}
+                <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                {%endif%}
+            </div>
+            <div id="img6">
+                {%if boolean_list[5]==True%}
+                <a href="{{url_for('static',filename='media/floppictures/commun/floppa6.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa6.jpg')}}"></a>
+                {%else%}
+                <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                {%endif%}
+            </div>
+            </div>
+
+            <div class=gallery-page style="color: blue">
+                <div id="img7">
+                    {%if boolean_list[6]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/commun/floppa7.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa7.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img8">
+                    {%if boolean_list[7]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/commun/floppa8.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/commun/floppa8.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+        
+                <div id="img9">
+                    {%if boolean_list[8]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa9.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa9.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img10">
+                    {%if boolean_list[9]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa10.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa10.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img11">
+                    {%if boolean_list[10]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa11.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa11.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img12">
+                    {%if boolean_list[11]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa12.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa12.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+            </div>
+
+            <div class=gallery-page style="color: red">
+                <div id="img13">
+                    {%if boolean_list[12]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa13.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa13.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img14">
+                    {%if boolean_list[13]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa14.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa14.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img15">
+                    {%if boolean_list[14]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/rare/floppa15.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/rare/floppa15.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+        
+                <div id="img16">
+                    {%if boolean_list[15]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/epique/floppa16.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/epique/floppa16.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img17">
+                    {%if boolean_list[16]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/epique/floppa17.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/epique/floppa17.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+            </div>
+
+            <div class=gallery-page>
+                <div id="img18">
+                    {%if boolean_list[17]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/epique/floppa18.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/epique/floppa18.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img19">
+                    {%if boolean_list[18]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/epique/floppa19.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/epique/floppa19.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img20">
+                    {%if boolean_list[19]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/epique/floppa20.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/epique/floppa20.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+        
+                <div id="img21">
+                    {%if boolean_list[20]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/legendaire/floppa21.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/legendaire/floppa21.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img22">
+                    {%if boolean_list[21]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/legendaire/floppa22.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/legendaire/floppa22.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+                <div id="img23">
+                    {%if boolean_list[22]==True%}
+                    <a href="{{url_for('static',filename='media/floppictures/legendaire/floppa23.jpg')}}"><img src="{{url_for('static',filename='media/floppictures/legendaire/floppa23.jpg')}}"></a>
+                    {%else%}
+                    <img src="{{url_for('static',filename='media/fond_noir.png')}}">
+                    {%endif%}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id=buttons>
+
+        <button id="previous-button" onclick="previous()">
+            <img src="{{url_for('static',filename='media/arrow.png')}}" height="15px">
+        </button>
+
+        <a href="{{url_for('index')}}">
+            <div id=return>
+                <p>Retour</p>
+            </div>
+        </a>
+
+        <button id="next-button" onclick="next()">
+            <img src="{{url_for('static',filename='media/arrow.png')}}" height="15px">
+        </button>
+
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+
+        let pageNumber = 0;
+        let pages = document.getElementById("gallery-pages").children;
+        let maxPageNumber = pages.length-1;
+        
+        function next()
+        {
+            if(pageNumber!=maxPageNumber)
+            {
+                pages[pageNumber].style.display = "none";
+                pageNumber+=1;
+                pages[pageNumber].style.display = "grid";
+            }
+        }
+
+        function previous()
+        {
+            if(pageNumber!=0)
+            {
+                pages[pageNumber].style.display = "none";
+                pageNumber-=1;
+                pages[pageNumber].style.display = "grid";
+            }
+        }
+
+		document.body.addEventListener("keydown", keyListener);
+
+        function keyListener(key)
+        {
+            if(key.key=="ArrowLeft")
+            {
+                previous();
+            }
+            if(key.key=="ArrowRight")
+            {
+                next();
+            }
+        }
+
+
+    </script>
+
+</body>

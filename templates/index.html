@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block link %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+{% endblock %}
+{% block body%}
+<div class="bloc">
+	<h1>Wordle, version Big Floppa !</h1>
+	<div class="input">
+		<div class="post">
+			<strong>Commencez une partie :</strong>
+			{% if isLoggedIn =="true" %}
+			<form action="{{url_for('joinGame')}}" method='POST'>
+				<div class="field">
+					<p>Nombre de lettres par mots</p>
+					<select name="length" id="length">
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5" selected>5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					<p>Nombre d'essais autorisés</p>
+					<select name="tries" id="tries">
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7" selected>7</option>
+					  </select>
+					<input type="hidden" name="submit" value="Commencer">
+					<p><input type="submit" value="Commencer"></p>
+					<p>
+						<br/>Pas assez de mots ? <a href="{{url_for('addWord')}}">Ajoutez un mot au dictionnaire</a> !
+					</p>
+				</div>
+			</form>
+			{% else %}
+			<p><br/>Inscrivez-vous ou connectez-vous pour pouvoir jouer à Flopple !</p>
+			<p><br/>Défilez et cliquez sur 'A Propos' pour comprendre le fonctionnement du site.</p>
+			<p><br/></p>
+			{% endif %}
+			
+		</div>	
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+.body {
+    background-size: cover ;
+    background-position: right;
+}
+
+.body .bloc {
+    background: rgba(43, 99, 183, 0.7);
+	padding: 20px;
+	border-radius: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    gap: 0.8rem;
+}
+.body p{
+	font-size: 1vw;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body #the-end{
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.body #the-end div{
+    visibility: hidden;
+}
+
+.body .bloc #floppa-pic{
+    justify-content: center;
+    resize : none;
+    display: flex;
+    visibility: hidden;
+    max-width: 20vw;
+    max-height: 20vh;
+}
+
+#floppa-pic img
+{
+    max-width: 20vw;
+    max-height: 20vh;
+}
+
+.exit-button
+{
+    padding: 10%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
