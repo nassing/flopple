@@ -18,20 +18,20 @@
                     <p>e</p>
                 </div>
             </a>
-            <p>Rejoignez Flopple pour obtenir les <br/>meilleurs images de Big Floppa !</p>
+            <p>Join Flopple to earn the best Big Floppa pictures !</p>
         </section>
         <section class="rightpart">
             <form action="{{ url_for('addUser') }}" method='POST'>
                 <div class="field">
-                    <p>Nom d'utilisateur</p>
+                    <p>Username</p>
                     <input required  autocomplete="off" pattern="[^\s]+" type="text" id="username" name="username" title="Ce champ ne doit pas contenir d'espaces" >
                 </div>
                 <div class="field">
-                    <p>Mot de Passe</p>
+                    <p>Password</p>
                     <input required pattern="[^\s]+" type="password" id="password" name="password" title="Ce champ ne doit pas contenir d'espaces" >
                 </div>
                 <div class="field">
-                    <p>Confirmez Mot de Passe</p>
+                    <p>Confirm Password</p>
                     <input required pattern="[^\s]+" type="password" id="confirm_password" name="confirm_password" title="Ce champ ne doit pas contenir d'espaces" >
                 </div>
                 <div class="button">

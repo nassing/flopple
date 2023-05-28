@@ -5,12 +5,12 @@
 
 {% block body%}
 
-<h1>Liste des parties précedemment gagnées</h1>
+<h1>List of previously won games</h1>
 {% for i in range(long) %}
     {% set replay=data[i] %}
 
     <div id="bloc">
-        <a href="{{url_for('games', id_game = replay[0]) }}">Partie n°{{replay[0]}}, Le mot cible était {{replay[1]}}, avec {{replay[2]}} mots rentrés.</a>
+        <a href="{{url_for('games', id_game = replay[0]) }}">Partie n°{{replay[0]}}, The word was {{replay[1]}}, you found after {{replay[2]}} tries.</a>
     </div>
 
 {% endfor %}

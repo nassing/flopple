@@ -77,20 +77,14 @@ def addWords():
     con = sqlite3.connect("flopple.db")
     cursor = con.cursor()
     try:
-        fichier = open("dico2.txt", "r", encoding="utf-8")
+        with open("dico", "r", encoding="utf-8") as fichier:
+            for line in fichier:
+                word = line.strip().lower()
+                if len(word) >= 3:
+                    cursor.execute("INSERT INTO words (word, length) VALUES (?, ?)", (word, len(word)))
+            con.commit()
     except:
-        fichier = open("/home/eleve/project2-E9/flask_serv/dico2.txt", "r", encoding="utf-8")
-    liste=fichier.readlines()
-    try:
-        for word in liste:
-            if len(word) >= 3:
-                word = word.strip().lower()
-                command = "INSERT INTO words (word, length) VALUES (?, ?)"
-                wordSize = len(word)
-                cursor.execute(command, (word, wordSize))
-    except:
-        e = "error during the process"
-    con.commit()
+        print("Erreur lors du processus")
     fichier.close()
     con.close
 
@@ -305,7 +299,7 @@ def getUserID(username):
     # fonction permettant de récupérer l'ID d'un user à partir de son username
     con = sqlite3.connect("flopple.db")
     cursor = con.cursor()
-    cursor.execute("SELECT id FROM userInfo WHERE username=?", (username,)) 
+    cursor.execute("SELECT id FROM userInfo WHERE username=?", (username,))
     data = cursor.fetchall()[0][0]
     return data
 
@@ -818,9 +812,12 @@ def index():
     floppaCoinsAmount=0
     bingusFragments=0
     if "username" in session:
-            user_id=getUserID(session["username"])
-            floppaCoinsAmount=getCoins(user_id)
-            bingusFragments=getFragments(user_id)
+            try:
+                user_id=getUserID(session["username"])
+                floppaCoinsAmount=getCoins(user_id)
+                bingusFragments=getFragments(user_id)
+            except:
+                session.pop("username",None)
     if "alert_message" in session:  #Si y'a un message d'alerte quelconque
         alert_message=session["alert_message"]
         session.pop("alert_message",None) #On le supprime, pour pas avoir à le ré-afficher la prochaine fois
@@ -1271,5 +1268,4 @@ cleanTables()
 #createNewSpecificGame(8, 5, 6, "trois")
 
 if __name__ == "__main__":
-    port = 5000 + random.randint(0, 999)
-    app.run(use_reloader=False, debug=True, port=port)
+    app.run(use_reloader=False, debug=True, port=5000)

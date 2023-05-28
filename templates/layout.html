@@ -36,8 +36,8 @@
                 </a>
                 <nav class="login_register">
                     <ul>
-                        <li><a href="{{ url_for ('login') }}">Connexion</a></li>
-                        <li><a href="{{ url_for ('register') }}" title="Première connexion">Créer un compte</a></li>
+                        <li><a href="{{ url_for ('login') }}">Log In</a></li>
+                        <li><a href="{{ url_for ('register') }}" title="Première connexion">Sign up</a></li>
                     </ul>
                 </nav>
             </header>
@@ -64,7 +64,7 @@
                         <p>{{floppaCoinsAmount}}x</p>
                         <img id=floppa-coin src="{{url_for('static',filename='media/floppa_coin.png')}}">
                         <div id=floppa-textbox>
-                            <p>Vous avez {{floppaCoinsAmount}} Floppa Coins</p>
+                            <p>You have {{floppaCoinsAmount}} Floppa Coins</p>
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                     <div id=bingus>
                         <img id=bingus-img src="{{url_for('static',filename='media/bingus_fragments_0.png')}}">
                         <div id=bingus-textbox>
-                            <p>Vous n'avez aucun fragment de Bingus</p>
+                            <p>Vous have no Bingus fragment</p>
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@
                     <div id=bingus>
                         <img id=bingus-img src="{{url_for('static',filename='media/bingus_fragments_1.png')}}">
                         <div id=bingus-textbox>
-                            <p>Vous avez 1 fragment de Bingus</p>
+                            <p>You have 1 Bingus fragment</p>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
                     <div id=bingus>
                         <img id=bingus-img src="{{url_for('static',filename='media/bingus_fragments_2.png')}}">
                         <div id=bingus-textbox>
-                            <p>Vous avez 2 fragments de Bingus</p>
+                            <p>You have 2 Bingus fragments</p>
                         </div>
                     </div>
                     
@@ -96,15 +96,15 @@
                     <div id=bingus>
                         <img id=bingus-img src="{{url_for('static',filename='media/bingus_fragments_3.png')}}">
                         <div id=bingus-textbox>
-                            <p>Vous avez 3 fragments de Bingus</p>
+                            <p>You have 3 Bingus fragments</p>
                         </div>
                     </div>
 
                     {%endif%}
-                    <a href="{{ url_for ('replays') }}">Historique</a>                        
-                    <a href="{{ url_for ('gallery') }}">Galerie</a> 
-                    <a href="{{ url_for ('loterie') }}">Loterie</a> 
-                    <a href="{{ url_for ('logout') }}">Déconnexion</a>                        
+                    <a href="{{ url_for ('replays') }}">History</a>                        
+                    <a href="{{ url_for ('gallery') }}">Gallery</a> 
+                    <a href="{{ url_for ('loterie') }}">Vending Machine</a> 
+                    <a href="{{ url_for ('logout') }}">Log Out</a>                        
 
                 </nav>
 

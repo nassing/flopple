@@ -14,23 +14,23 @@
 
 <div class="result" style="display:none">
     {% if earned == "image" %}
-        <p>Félicitation, vous venez de gagner cette magnifique image !</p>
+        <p>Congratulations, you just won this amazing picture !</p>
         <img src="/static/media/floppictures/{{rarity}}/{{address}}">
-        <p>Cette image est {{rarity}}</p>
+        <p>This image is {{rarity}}</p>
     {% endif %}
 
     {% if earned == "floppa" %}
-        <p>Pas d'image pour vous, mais vous repartez avec un Floppa Coin !</p>
+        <p>No picture for you, but you still get a Floppa Coin !</p>
         <img src="{{ url_for('static', filename='media/floppa_money.jpg') }}">
     {% endif %}
 
     {% if earned == "bingus" %}
-        <p>Pas d'image pour vous ... mais au moins vous perdez un fragment de Bingus, vive Floppa !</p>
+        <p>No picture for you... but at least you was removed a Bingus fragment, hurray !</p>
         <img src="{{ url_for('static', filename='media/bingus.jpg') }}">
     {% endif %}
 
     <div id=return-button>
-        <a href="{{url_for('index')}}">Revenir à l'accueil</a>
+        <a href="{{url_for('index')}}">Back to Home</a>
     </div>
 
 

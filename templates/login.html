@@ -18,17 +18,17 @@
                     <p>e</p>
                 </div>
             </a>
-            <p>Rejoignez Flopple pour obtenir les <br/>meilleurs images de Big Floppa !</p>
+            <p>Join Flopple to earn the best Big Floppa pictures !</p>
         </section>
         <section class="rightpart">
             <div class="login">
                 <form action="{{ url_for('logUser') }}" method='POST'>
                     <div class="field">
-                        <p>Nom d'utilisateur</p>
+                        <p>Username</p>
                         <input required autocomplete="off" type="text" id="username" name="username" pattern="[^\s]+" title="Ce champ ne doit pas contenir d'espaces">
                     </div>
                     <div class="field">
-                        <p>Mot de Passe</p>
+                        <p>Password</p>
                         <input required type="password" id="password" name="password" pattern="[^\s]+" title="Ce champ ne doit pas contenir d'espaces">
                     </div>
                     <div class="button">

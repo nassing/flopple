@@ -1,8 +1,8 @@
-fichier = open("dico.txt", "r")
+fichier = open("dico2", "r")
 liste = fichier.readlines()
-fichier2 = open("dico2.txt", "w")
+fichier2 = open("dico", "w")
 for elmt in liste:
-    if len(elmt)>3:
+    if not "è" in elmt:
         fichier2.write(elmt)
 fichier.close()
 fichier2.close()

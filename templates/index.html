@@ -5,14 +5,14 @@
 {% endblock %}
 {% block body%}
 <div class="bloc">
-	<h1>Wordle, version Big Floppa !</h1>
+	<h1>Wordle with Big Floppa</h1>
 	<div class="input">
 		<div class="post">
-			<strong>Commencez une partie :</strong>
+			<strong>Start a game :</strong>
 			{% if isLoggedIn =="true" %}
 			<form action="{{url_for('joinGame')}}" method='POST'>
 				<div class="field">
-					<p>Nombre de lettres par mots</p>
+					<p>Nuber of letter per words</p>
 					<select name="length" id="length">
 						<option value="3">3</option>
 						<option value="4">4</option>
@@ -25,7 +25,7 @@
 						<option value="11">11</option>
 						<option value="12">12</option>
 					</select>
-					<p>Nombre d'essais autorisés</p>
+					<p>Number of tries</p>
 					<select name="tries" id="tries">
 						<option value="3">3</option>
 						<option value="4">4</option>
@@ -34,15 +34,15 @@
 						<option value="7" selected>7</option>
 					  </select>
 					<input type="hidden" name="submit" value="Commencer">
-					<p><input type="submit" value="Commencer"></p>
+					<p><input type="submit" value="Play"></p>
 					<p>
-						<br/>Pas assez de mots ? <a href="{{url_for('addWord')}}">Ajoutez un mot au dictionnaire</a> !
+						<br/>Not enough words ? <a href="{{url_for('addWord')}}">Add one in the dictionary !</a>
 					</p>
 				</div>
 			</form>
 			{% else %}
-			<p><br/>Inscrivez-vous ou connectez-vous pour pouvoir jouer à Flopple !</p>
-			<p><br/>Défilez et cliquez sur 'A Propos' pour comprendre le fonctionnement du site.</p>
+			<p><br/>You must have an account to play to flopple</p>
+			<p><br/>You can see the rules <a href="{{url_for('about')}}">here</a></p>
 			<p><br/></p>
 			{% endif %}
 			
